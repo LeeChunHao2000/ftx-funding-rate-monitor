@@ -1,0 +1,191 @@
+body{
+    padding: 50px;
+    display: flex;
+    background-color: #f2f2f2;
+    justify-content: center;
+    color: black;
+    font-size: 15px;
+    line-height: 28px;
+    letter-spacing: 1px;
+    font-family: "微軟正黑體",sans-serif;
+    }
+
+    /* 複寫區 */
+    ul{
+    padding: 0;
+    list-style: none;
+    }
+    h2{
+    margin: 0;
+    margin-bottom: 25px;
+    font-weight: 400;
+    }
+    h2::after{
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 8px;
+    background-color: #26efac;
+    margin-left: 10px;
+    }
+    h4{
+    margin: 0;
+    margin-top: 40px;
+    opacity: 0.8;
+    font-weight: 400;
+    }
+    a{
+    color: black;
+    text-decoration: none
+    }
+    hr{
+    border: none;
+    border-bottom: solid 4px #26efac;
+    width: 40%;
+    margin-left: 0;
+    }
+
+    .logo{
+        text-align: none;
+    }
+    .logo img{
+        position: relative;
+        bottom: -8px;
+    }
+
+    .left{
+    flex: 5
+    }
+    .right{
+    flex: 7
+    }
+    .left,.right{
+    padding: 15px
+    }
+    .left{
+    padding-right: 50px;
+    }
+
+    .right{
+    padding-left: 50px;
+    padding-top: 150px;
+    }
+
+    .decoration{
+    width: 300px;
+    height: 140px;
+    background: linear-gradient(135deg,#FF5F5F,#FFFFAE);
+    border-radius: 70px 0px 0px 70px;
+    position: absolute;
+    right: 0;
+    top: 50px;
+    }
+
+    .listExperience>li{
+    display: flex;
+    margin-bottom: 10px;
+    }
+
+    .listExperience>li:nth-child(1) ul{
+    border-color: #FF7168
+    }
+    .listExperience>li:nth-child(2) ul{
+    border-color: #FFA582
+    }
+    .listExperience>li:nth-child(3) ul{
+    border-color: #FFB087
+    }
+    .listExperience>li:nth-child(4) ul{
+    border-color: #FFDE9E
+    }
+    .listExperience li ul{
+    padding-left: 10px;
+    margin-left: 10px;
+    border-left: solid 4px white
+    }
+
+
+    /* list skill */
+    .listSkill{
+    display: flex;
+    flex-wrap: wrap;
+    }
+    
+    .listSkill li{
+        width: 33%;
+        padding: 5px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        }
+
+    .Score{
+        width: 60px;
+        height: 60px;
+        position: relative;
+        color: #26efac;
+    }
+
+    /* list program */
+
+    .listProgram .bar{
+    width: 150px;
+    height: 10px;
+    border: solid 2px #FF7168;
+    border-radius: 5px
+    }
+    
+    .listProgram li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+    }
+    .value{
+    height: 100%;
+    width: 60%;
+    background-color: #FF7168;
+    }
+    .value.p10{
+    width: 10%;
+    }
+    
+    .value.p20{
+    width: 20%;
+    }
+    .value.p30{
+    width: 30%;
+    }
+    .value.p40{
+    width: 40%;
+    }
+    .value.p50{
+    width: 50%;
+    }
+    .value.p60{
+    width: 60%;
+    }
+    .value.p70{
+    width: 70%;
+    }
+    .value.p80{
+    width: 80%;
+    }
+    .value.p90{
+    width: 90%;
+    }
+
+    .value.p100{
+    width: 100%;
+    }
+
+    .btn{
+    border: solid 3px #26efac;
+    padding: 5px 20px;
+    margin-right: 10px;
+    }
+    .fill{
+    background-color: #26efac;
+    }

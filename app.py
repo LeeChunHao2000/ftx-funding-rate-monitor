@@ -1,10 +1,12 @@
-import requests, sys, time, random, webbrowser, json
+import requests, sys, time, random, webbrowser, json, base64
 import pandas as pd
 import matplotlib.pyplot as plt
 
 from pandas.plotting import parallel_coordinates, table
 
 from flask import Flask, request, abort
+
+from io import BytesIO
 
 # 全域變數
 app = Flask(__name__)
@@ -25,10 +27,10 @@ def home():
         <head>
             <meta charset="UTF-8">
             <title></title>
-            <link href="" rel="stylesheet" type="text/css" />
+            <link href="style.css" rel="stylesheet" type="text/css" />
         </head>
         <body>
-        132
+        
         </body>
     </html>
     '''
