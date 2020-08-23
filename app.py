@@ -34,7 +34,7 @@ def home():
         </body>
     </html>
     '''
-    return "賴田捕手第 20 天"
+    return html
 
 # main
 if __name__ == "__main__":
