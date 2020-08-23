@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 from pandas.plotting import parallel_coordinates, table
 
-from flask import Flask, request, abort
+from flask import Flask, request, abort, render_template
 
 from io import BytesIO
 
@@ -52,8 +52,8 @@ def home():
     PAXG.close.plot(label = 'PAXG Price')
     XAUT.close.plot(label = 'PAXG Price')
     plt.legend()
-    # PAXG_PRICE = GetPrice('PAXG-PERP')
-    # XAUT_PRICE = GetPrice('XAUT-PERP')
+    PAXG_PRICE = GetPrice('PAXG-PERP')
+    XAUT_PRICE = GetPrice('XAUT-PERP')
 
     # 圖片處理
     sio = BytesIO()
@@ -62,52 +62,8 @@ def home():
     print(data)
     
     # 網頁
-    html = '''
-    <!DOCTYPE html>
-
-    <html lang="zh-tw">
-
-        <head>
-
-            <meta content="text/html; charset=utf-8" http-equiv="content-type">
-
-            <title>FTX PAXG-XAUT 費率時實更新表</title>
-
-            <meta content="FTX PAXG-XAUT 費率時實更新表" name="FTX PAXG-XAUT 費率時實更新表">
-            <meta content="HTML>
-
-            <meta name="author" content="FTX PAXG-XAUT 費率時實更新表">
-
-            <link href="/static/css/style.css" rel="stylesheet" type="text/css" />
-
-        </head>
-
-        <body>
-
-            <div id="page">
-
-            <h1 align="center"><br>FTX PAXG-XAUT 費率時實更新表</h1>
-
-            <hr size=1></hr>
-
-            <h3 align="left">
-            一、<a href="#價格圖">價格圖</a><br>
-            </h3>
-
-            <h1 align="center" id="價格圖"><br>PAXG-XAUT 現價四小時圖</h1>
-
-            <hr size=1></hr>
-
-            <img src="data:image/png;base64,{}" />
-
-            </div>
-        
-        </body>
-
-    </html>
-    '''
     plt.close()
-    return html.format(data)
+    return render_template('home.html',  PAXG = PAXG_PRICE, XAUT = XAUT_PRICE, img = data)
 
 # main
 if __name__ == "__main__":
