@@ -48,6 +48,7 @@ def home():
     # 資料
     PAXG = GetCandle('PAXG-PERP')
     XAUT = GetCandle('XAUT-PERP')
+    plt.rcParams['figure.figsize'] = (8.0, 4.0)
     PAXG.close.plot(label = 'PAXG Price')
     XAUT.close.plot(label = 'PAXG Price')
     plt.legend()
