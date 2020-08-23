@@ -36,6 +36,13 @@ def GetFundingRate(pair):
     df = pd.DataFrame(data)
     return df
 
+def GetPrice(pair)
+    try:
+        data = requests.get(f'https://ftx.com/api/futures/{pair}').json()['result']['last']
+    except Exception as e:
+        print ('Error! promblem is {}'.format(e.args[0])
+    return data
+
 @app.route("/")
 def home():
     # 資料
@@ -45,6 +52,8 @@ def home():
     XAUT.close.plot(label = 'PAXG Price')
     plt.title('PAXG-XAUT\nPricing Premium Chart')
     plt.legend()
+    PAXG_PRICE = GetPrice('PAXG-PERP')
+    XAUT_PRICE = GetPrice('XAUT-PERP')
 
     # 圖片處理
     sio = BytesIO()
@@ -54,18 +63,50 @@ def home():
     
     # 網頁
     html = '''
-    <!doctype html>
-    <html>
+    <!DOCTYPE html>
+
+    <html lang="zh-tw">
+
         <head>
-            <meta charset="UTF-8">
-            <title></title>
-            <link href="style.css" rel="stylesheet" type="text/css" />
+
+            <meta content="text/html; charset=utf-8" http-equiv="content-type">
+
+            <title>FTX PAXG-XAUT 費率時實更新表</title>
+
+            <meta content="FTX PAXG-XAUT 費率時實更新表" name="FTX PAXG-XAUT 費率時實更新表">
+            <meta content="HTML>
+
+            <meta name="author" content="FTX PAXG-XAUT 費率時實更新表">
+
+        <link href="style.css" rel="stylesheet" type="text/css" />
+
         </head>
+
         <body>
-        <img src="data:image/png;base64,{}" />
+
+            <div id="page">
+
+            <h1 align="center"><br>FTX PAXG-XAUT 費率時實更新表</h1>
+
+            <hr size=1></hr>
+
+            <h3 align="left">
+            一、<a href="#價格圖">價格圖</a><br>
+            </h3>
+
+            <h1 align="center" id="價格圖"><br>PAXG-XAUT 現價四小時圖</h1>
+
+            <hr size=1></hr>
+
+            <img src="data:image/png;base64,{}" />
+
+            </div>
+        
         </body>
+
     </html>
     '''
+
     plt.close()
     return html.format(data)
 
