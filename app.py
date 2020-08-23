@@ -106,7 +106,6 @@ def home():
 
     </html>
     '''
-
     plt.close()
     return html.format(data)
 
