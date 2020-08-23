@@ -51,6 +51,10 @@ def GetPrice(pair):
         print ('Error! promblem is {}'.format(e.args[0]))
     return data
 
+# Math Tools
+def Decimals(num, digit):
+    return format(num, f'.{digit}f')
+
 @app.route("/")
 def home():
     # 資料
@@ -62,11 +66,11 @@ def home():
     plt.legend()
     PAXG_PRICE   = GetPrice('PAXG-PERP')
     XAUT_PRICE   = GetPrice('XAUT-PERP')
-    PREMIUM      = PAXG_PRICE - XAUT_PRICE
-    PREMIUM_RATE = PAXG_PRICE / XAUT_PRICE
+    PREMIUM      = Decimals(PAXG_PRICE - XAUT_PRICE, 1)
+    PREMIUM_RATE = Decimals(PAXG_PRICE / XAUT_PRICE, 1)
     PAXG_RATE    = GetNextFundingRate('PAXG-PERP')
     XAUT_RATE    = GetNextFundingRate('XAUT-PERP')
-    RATE_GAP     = PAXG_RATE - XAUT_RATE
+    RATE_GAP     = Decimals(PAXG_RATE - XAUT_RATE, 4)
 
     # 圖片處理
     sio = BytesIO()
