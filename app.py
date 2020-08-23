@@ -67,7 +67,7 @@ def home():
     PAXG_PRICE   = GetPrice('PAXG-PERP')
     XAUT_PRICE   = GetPrice('XAUT-PERP')
     PREMIUM      = PAXG_PRICE - XAUT_PRICE
-    PREMIUM_RATE = Decimals(PAXG_PRICE / XAUT_PRICE, 2)
+    PREMIUM_RATE = PAXG_PRICE / XAUT_PRICE - 1
     PAXG_RATE    = Decimals(GetNextFundingRate('PAXG-PERP'), 4)
     XAUT_RATE    = Decimals(GetNextFundingRate('XAUT-PERP'), 4)
     RATE_GAP     = Decimals(float(PAXG_RATE) - float(XAUT_RATE), 4)
