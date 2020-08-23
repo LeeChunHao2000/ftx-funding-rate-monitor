@@ -36,6 +36,14 @@ def GetFundingRate(pair):
     df = pd.DataFrame(data)
     return df
 
+def GetNextFundingRate(pair):
+    try:
+        data = requests.get(f'https://ftx.com/api/futures/{pair}/stats').json()['result']['nextFundingRate']
+    except Exception as e:
+        print ('Error! promblem is {}'.format(e.args[0]))
+    return data * 100
+
+
 def GetPrice(pair):
     try:
         data = requests.get(f'https://ftx.com/api/futures/{pair}').json()['result']['last']
@@ -54,6 +62,8 @@ def home():
     plt.legend()
     PAXG_PRICE = GetPrice('PAXG-PERP')
     XAUT_PRICE = GetPrice('XAUT-PERP')
+    PAXG_RATE  = GetNextFundingRate('PAXG-PERP')
+    XAUT_RATE  = GetNextFundingRate('XAUT-PERP')
 
     # 圖片處理
     sio = BytesIO()
@@ -64,7 +74,7 @@ def home():
     
     # 網頁
     plt.close()
-    return render_template('home.html',  PAXG = PAXG_PRICE, XAUT = XAUT_PRICE, img = imd)
+    return render_template('home.html',  PAXG = PAXG_PRICE, XAUT = XAUT_PRICE, PAXG_RATE = PAXG_RATE, XAUT_RATE = XAUT_RATE, img = imd)
 
 # main
 if __name__ == "__main__":
