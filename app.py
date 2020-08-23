@@ -70,7 +70,7 @@ def home():
     PREMIUM_RATE = Decimals(PAXG_PRICE / XAUT_PRICE, 2)
     PAXG_RATE    = Decimals(GetNextFundingRate('PAXG-PERP'), 4)
     XAUT_RATE    = Decimals(GetNextFundingRate('XAUT-PERP'), 4)
-    RATE_GAP     = Decimals(PAXG_RATE - XAUT_RATE, 4)
+    RATE_GAP     = Decimals(float(PAXG_RATE) - float(XAUT_RATE), 4)
 
     # 圖片處理
     sio = BytesIO()
