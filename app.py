@@ -52,7 +52,7 @@ def GetPrice(pair):
     return data
 
 # Math Tools
-def Decimals(num, digit):
+def Decimals(num: float, digit):
     return format(num, f'.{digit}f')
 
 @app.route("/")
@@ -67,7 +67,7 @@ def home():
     PAXG_PRICE   = GetPrice('PAXG-PERP')
     XAUT_PRICE   = GetPrice('XAUT-PERP')
     PREMIUM      = PAXG_PRICE - XAUT_PRICE
-    PREMIUM_RATE = PAXG_PRICE / XAUT_PRICE
+    PREMIUM_RATE = Decimals(PAXG_PRICE / XAUT_PRICE, 2)
     PAXG_RATE    = Decimals(GetNextFundingRate('PAXG-PERP'), 4)
     XAUT_RATE    = Decimals(GetNextFundingRate('XAUT-PERP'), 4)
     RATE_GAP     = Decimals(PAXG_RATE - XAUT_RATE, 4)
