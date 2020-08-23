@@ -40,7 +40,7 @@ def GetPrice(pair):
     try:
         data = requests.get(f'https://ftx.com/api/futures/{pair}').json()['result']['last']
     except Exception as e:
-        print ('Error! promblem is {}'.format(e.args[0])
+        print ('Error! promblem is {}'.format(e.args[0]))
     return data
 
 @app.route("/")
