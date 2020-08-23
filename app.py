@@ -78,7 +78,7 @@ def home():
 
             <meta name="author" content="FTX PAXG-XAUT 費率時實更新表">
 
-            <link href="https://hyip.tw/Quantize/style.css" rel="stylesheet" type="text/css" />
+            <link href="/static/css/style.css" rel="stylesheet" type="text/css" />
 
         </head>
 
