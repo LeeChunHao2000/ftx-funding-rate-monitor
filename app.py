@@ -77,7 +77,9 @@ def home():
 
             <meta name="author" content="FTX PAXG-XAUT 費率時實更新表">
 
-        <link href="style.css" rel="stylesheet" type="text/css" />
+            <style type="text/css">
+                @import url(style.css);
+            </style>
 
         </head>
 
