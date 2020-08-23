@@ -59,11 +59,12 @@ def home():
     sio = BytesIO()
     plt.savefig(sio, format='png')
     data = base64.encodebytes(sio.getvalue()).decode()
+    imd = "data:image/png;base64," + data
     print(data)
     
     # 網頁
     plt.close()
-    return render_template('home.html',  PAXG = PAXG_PRICE, XAUT = XAUT_PRICE, img = data)
+    return render_template('home.html',  PAXG = PAXG_PRICE, XAUT = XAUT_PRICE, img = imd)
 
 # main
 if __name__ == "__main__":
