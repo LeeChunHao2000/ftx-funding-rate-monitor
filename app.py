@@ -66,8 +66,8 @@ def home():
     plt.legend()
     PAXG_PRICE   = GetPrice('PAXG-PERP')
     XAUT_PRICE   = GetPrice('XAUT-PERP')
-    PREMIUM      = Decimals(PAXG_PRICE - XAUT_PRICE, 1)
-    PREMIUM_RATE = Decimals(PAXG_PRICE / XAUT_PRICE, 1)
+    PREMIUM      = PAXG_PRICE - XAUT_PRICE
+    PREMIUM_RATE = PAXG_PRICE / XAUT_PRICE
     PAXG_RATE    = Decimals(GetNextFundingRate('PAXG-PERP'), 4)
     XAUT_RATE    = Decimals(GetNextFundingRate('XAUT-PERP'), 4)
     RATE_GAP     = Decimals(PAXG_RATE - XAUT_RATE, 4)
