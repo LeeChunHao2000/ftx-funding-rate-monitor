@@ -25,7 +25,7 @@ def home():
         <head>
             <meta charset="UTF-8">
             <title></title>
-            <link href="https://www.hyip.tw/Aboutme/assets/css/main.css" rel="stylesheet" type="text/css" />
+            <link href="" rel="stylesheet" type="text/css" />
         </head>
         <body>
         132
