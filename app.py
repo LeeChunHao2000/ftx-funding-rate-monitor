@@ -50,10 +50,9 @@ def home():
     XAUT = GetCandle('XAUT-PERP')
     PAXG.close.plot(label = 'PAXG Price')
     XAUT.close.plot(label = 'PAXG Price')
-    plt.title('PAXG-XAUT\nPricing Premium Chart')
     plt.legend()
-    PAXG_PRICE = GetPrice('PAXG-PERP')
-    XAUT_PRICE = GetPrice('XAUT-PERP')
+    # PAXG_PRICE = GetPrice('PAXG-PERP')
+    # XAUT_PRICE = GetPrice('XAUT-PERP')
 
     # 圖片處理
     sio = BytesIO()
