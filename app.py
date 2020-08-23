@@ -60,10 +60,13 @@ def home():
     PAXG.close.plot(label = 'PAXG Price')
     XAUT.close.plot(label = 'PAXG Price')
     plt.legend()
-    PAXG_PRICE = GetPrice('PAXG-PERP')
-    XAUT_PRICE = GetPrice('XAUT-PERP')
-    PAXG_RATE  = GetNextFundingRate('PAXG-PERP')
-    XAUT_RATE  = GetNextFundingRate('XAUT-PERP')
+    PAXG_PRICE   = GetPrice('PAXG-PERP')
+    XAUT_PRICE   = GetPrice('XAUT-PERP')
+    PREMIUM      = XAUT_PRICE - PAXG_PRICE
+    PREMIUM_RATE = XAUT_PRICE / PAXG_PRICE
+    PAXG_RATE    = GetNextFundingRate('PAXG-PERP')
+    XAUT_RATE    = GetNextFundingRate('XAUT-PERP')
+    RATE_GAP     = PAXG_RATE - XAUT_RATE
 
     # 圖片處理
     sio = BytesIO()
@@ -74,7 +77,7 @@ def home():
     
     # 網頁
     plt.close()
-    return render_template('home.html',  PAXG = PAXG_PRICE, XAUT = XAUT_PRICE, PAXG_RATE = PAXG_RATE, XAUT_RATE = XAUT_RATE, img = imd)
+    return render_template('home.html',  PAXG = PAXG_PRICE, XAUT = XAUT_PRICE, premium = PREMIUM, premium_rate = PREMIUM_RATE, PAXG_RATE = PAXG_RATE, XAUT_RATE = XAUT_RATE, rate_gap = RATE_GAP, img = imd)
 
 # main
 if __name__ == "__main__":

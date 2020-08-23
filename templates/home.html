@@ -6,12 +6,12 @@
 
         <meta content="text/html; charset=utf-8" http-equiv="content-type">
 
-        <title>FTX PAXG-XAUT 費率時實更新表</title>
+        <title>FTX PAXG-XAUT 費率實時更新表</title>
 
-        <meta content="FTX PAXG-XAUT 費率時實更新表" name="FTX PAXG-XAUT 費率時實更新表">
+        <meta content="FTX PAXG-XAUT 費率實時更新表" name="FTX PAXG-XAUT 費率實時更新表">
         <meta content="HTML>
 
-        <meta name="author" content="FTX PAXG-XAUT 費率時實更新表">
+        <meta name="author" content="FTX PAXG-XAUT 費率實時更新表">
 
         <link href="/static/css/style.css" rel="stylesheet" type="text/css" />
 
@@ -38,6 +38,8 @@
         <h3 align="left">
         PAXG 價格: {{ PAXG }}<br>
         XAUT 價格: {{ XAUT }}<br>
+        溢價: {{ premuim }} <br>
+        溢價率: {{ premuim_rate }}
 
         <h1 align="center" id="費率"><br>費率</h1>
   
@@ -46,6 +48,7 @@
         <h3 align="left">
         PAXG 費率: {{ PAXG_RATE }} %<br>
         XAUT 費率: {{ XAUT_RATE }} %<br>
+        費差: {{ rate_gap }}<br>
 
         <h1 align="center" id="價格圖"><br>價格圖</h1>
 
