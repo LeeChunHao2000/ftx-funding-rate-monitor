@@ -19,8 +19,40 @@ pd.set_option('display.width', 5000)
 pd.set_option('display.unicode.ambiguous_as_wide', True)
 pd.set_option('display.unicode.east_asian_width', True)
 
+# 函式庫
+def GetCandle(pair):
+    try:
+        data = requests.get(f'https://ftx.com/api/markets/{pair}/candles?resolution=3600&limit=500').json()['result']
+    except Exception as e:
+        print ('Error! promblem is {}'.format(e.args[0]))
+    df = pd.DataFrame(data)
+    return df
+
+def GetFundingRate(pair):
+    try:
+        data = requests.get(f'https://ftx.com/api/funding_rates?future={pair}').json()['result']
+    except Exception as e:
+        print ('Error! promblem is {}'.format(e.args[0]))
+    df = pd.DataFrame(data)
+    return df
+
 @app.route("/")
 def home():
+    # 資料
+    PAXG = GetCandle('PAXG-PERP')
+    XAUT = GetCandle('XAUT-PERP')
+    PAXG.close.plot(label = 'PAXG Price')
+    XAUT.close.plot(label = 'PAXG Price')
+    plt.title('PAXG-XAUT\nPricing Premium Chart')
+    plt.legend()
+
+    # 圖片處理
+    sio = BytesIO()
+    plt.savefig(sio, format='png')
+    data = base64.encodebytes(sio.getvalue()).decode()
+    print(data)
+    
+    # 網頁
     html = '''
     <!doctype html>
     <html>
@@ -30,11 +62,12 @@ def home():
             <link href="style.css" rel="stylesheet" type="text/css" />
         </head>
         <body>
-        
+        <img src="data:image/png;base64,{}" />
         </body>
     </html>
     '''
-    return html
+    plt.close()
+    return html.format(data)
 
 # main
 if __name__ == "__main__":
