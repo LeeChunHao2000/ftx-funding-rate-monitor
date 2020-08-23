@@ -36,7 +36,7 @@ def GetFundingRate(pair):
     df = pd.DataFrame(data)
     return df
 
-def GetPrice(pair)
+def GetPrice(pair):
     try:
         data = requests.get(f'https://ftx.com/api/futures/{pair}').json()['result']['last']
     except Exception as e:
