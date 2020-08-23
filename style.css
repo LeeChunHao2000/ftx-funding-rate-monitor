@@ -40,9 +40,9 @@ h1 {
 
     font-size:　32px;
 
- }
+}
 
- 
+
 
 h2{
 
@@ -52,27 +52,27 @@ h2{
 
 }
 
-        
+    
 
 p{
 
-  font-family: "微軟正黑體",Arial;
+    font-family: "微軟正黑體",Arial;
 
-  font-size: 16px;
+    font-size: 16px;
 
 }    
 
- 
 
- 
+
+
 
 a:link{
 
-  color:#7ca8ff;
+    color:#7ca8ff;
 
-  text-decoration: none;
+    text-decoration: none;
 
-  font-family: "微軟正黑體",Arial;
+    font-family: "微軟正黑體",Arial;
 
 }
 
@@ -80,14 +80,14 @@ a:link{
 
 a:visited{
 
-  color:#7ca8ff;
+    color:#7ca8ff;
 
-  text-decoration: none;
+    text-decoration: none;
 
 }
 
 a:hover{
 
-  text-decoration: underline;
+    text-decoration: underline;
 
 }
