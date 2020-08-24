@@ -62,7 +62,7 @@ def home():
     XAUT = GetCandle('XAUT-PERP')
     plt.rcParams['figure.figsize'] = (8.0, 4.0)
     PAXG.close.plot(label = 'PAXG Price')
-    XAUT.close.plot(label = 'PAXG Price')
+    XAUT.close.plot(label = 'XAUT Price')
     plt.legend()
     PAXG_PRICE   = GetPrice('PAXG-PERP')
     XAUT_PRICE   = GetPrice('XAUT-PERP')
