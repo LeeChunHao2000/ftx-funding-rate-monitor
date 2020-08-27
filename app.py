@@ -66,11 +66,11 @@ def home():
     plt.legend()
     PAXG_PRICE   = GetPrice('PAXG-PERP')
     XAUT_PRICE   = GetPrice('XAUT-PERP')
-    PREMIUM      = Decimals(PAXG_PRICE - XAUT_PRICE, 2)
-    PREMIUM_RATE = Decimals(float((PAXG_PRICE / XAUT_PRICE - 1) * 100), 2)
-    PAXG_RATE    = Decimals(GetNextFundingRate('PAXG-PERP'), 4)
-    XAUT_RATE    = Decimals(GetNextFundingRate('XAUT-PERP'), 4)
-    RATE_GAP     = Decimals(float(PAXG_RATE) - float(XAUT_RATE), 4)
+    PREMIUM      = round(PAXG_PRICE - XAUT_PRICE, 2)
+    PREMIUM_RATE = round(float((PAXG_PRICE / XAUT_PRICE - 1) * 100), 2)
+    PAXG_RATE    = round(GetNextFundingRate('PAXG-PERP'), 4)
+    XAUT_RATE    = round(GetNextFundingRate('XAUT-PERP'), 4)
+    RATE_GAP     = round(float(PAXG_RATE) - float(XAUT_RATE), 4)
 
     # 圖片處理
     sio = BytesIO()
