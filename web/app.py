@@ -1,4 +1,4 @@
-import requests,
+import requests
 import pandas as pd
 
 import matplotlib
@@ -45,19 +45,20 @@ def perpetual(coin):
     currentKLine           = pd.DataFrame(client.get_public_k_line(coin, 3600, 500)).close
     quarterKLine           = pd.DataFrame(client.get_public_k_line(quarter, 3600, 500)).close
 
-    fundingRateHistory     = pd.DataFrame(client.get_public_single_funding_rates(coin)).rate
+    fundingRateHistory     = pd.DataFrame(client.get_public_single_funding_rates(coin)).rate * 100
 
     plt.rcParams['figure.figsize'] = (8.0, 4.0)
     currentKLine.plot(label = coin + ' Price')
     quarterKLine.plot(label = quarter + ' Price')
     plt.legend()
-    plt.savefig(f'./app/static/img/{coin}.png')
-    plt.clf()
+    plt.savefig(f'/app/static/img/{coin}.png')
+    plt.cla()
 
     plt.rcParams['figure.figsize'] = (8.0, 4.0)
     fundingRateHistory.plot(label = coin + ' Rate')
     plt.legend()
-    plt.savefig(f'./app/static/img/{coin}-Rate.png')
+    plt.savefig(f'/app/static/img/{coin}-Rate.png')
+    plt.cla()
 
     return render_template('home.html', coin = coin, currentPrice = currentPrice, quarterPrice = quarterPrice, premiumPrice = premiumPrice, premiumPriceRate = premiumPriceRate, nextFundingRate = nextFundingRate, lastFundingRate = lastFundingRate)
 
