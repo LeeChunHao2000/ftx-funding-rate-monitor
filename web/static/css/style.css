@@ -1,0 +1,93 @@
+#page{
+
+    max-width: 820px;
+
+    min-width: 520px;
+
+    margin: 200px auto 260px auto;
+
+    padding:30px;
+
+    background-color: #ffffff;
+
+    -moz-box-shadow: 0 0 10px #777777;
+
+    -webkit-box-shadow: 0 0 10px #777777;
+
+    box-shadow: 0 0 10px #777777;
+
+    line-height: 1.4em; 
+
+    letter-spacing: 1.3px ;   	     
+
+}
+
+
+
+h3{
+
+    font-family: "微軟正黑體",Arial;
+
+    font-size: 18px;
+
+}
+
+
+
+h1 {
+
+    font-family: "微軟正黑體",Arial;
+
+    font-size:　32px;
+
+}
+
+
+
+h2{
+
+    font-family: "微軟正黑體",Arial;
+
+    font-size: 24px;
+
+}
+
+    
+
+p{
+
+    font-family: "微軟正黑體",Arial;
+
+    font-size: 16px;
+
+}    
+
+
+
+
+
+a:link{
+
+    color:#7ca8ff;
+
+    text-decoration: none;
+
+    font-family: "微軟正黑體",Arial;
+
+}
+
+
+
+a:visited{
+
+    color:#7ca8ff;
+
+    text-decoration: none;
+
+}
+
+a:hover{
+
+    text-decoration: underline;
+
+}
