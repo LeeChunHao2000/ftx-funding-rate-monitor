@@ -1,5 +1,8 @@
 import os, requests, time, json, base64
 import pandas as pd
+
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
 from FTX.client import Client
@@ -42,11 +45,19 @@ def perpetual(coin):
     currentKLine           = pd.DataFrame(client.get_public_k_line(coin, 3600, 500)).close
     quarterKLine           = pd.DataFrame(client.get_public_k_line(quarter, 3600, 500)).close
 
+    fundingRateHistory     = pd.DataFrame(client.get_public_single_funding_rates(coin)).rate
+
     plt.rcParams['figure.figsize'] = (8.0, 4.0)
     currentKLine.plot(label = coin + ' Price')
     quarterKLine.plot(label = quarter + ' Price')
     plt.legend()
-    plt.savefig(f'./web/static/img/{coin}.png')
+    plt.savefig(f'./app/static/img/{coin}.png')
+    plt.clf()
+
+    plt.rcParams['figure.figsize'] = (8.0, 4.0)
+    fundingRateHistory.plot(label = coin + ' Rate')
+    plt.legend()
+    plt.savefig(f'./app/static/img/{coin}-Rate.png')
 
     return render_template('home.html', coin = coin, currentPrice = currentPrice, quarterPrice = quarterPrice, premiumPrice = premiumPrice, premiumPriceRate = premiumPriceRate, nextFundingRate = nextFundingRate, lastFundingRate = lastFundingRate)
 
