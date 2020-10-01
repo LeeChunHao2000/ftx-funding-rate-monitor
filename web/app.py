@@ -27,7 +27,17 @@ def home():
 
 @app.route("/<coin>")
 def perpetual(coin):
-    return 'Perpetual: ' + coin
+
+    quarter = coin.upper() + '-1225'
+    coin    = coin.upper() + '-PERP'
+
+    client = Client('', '')
+
+    currentPrice           = client.get_public_single_future(coin)['last']
+    quarterPrice           = client.get_public_single_future(quarter)['last']
+    nextFundingRate = round(client.get_public_future_stats(coin)['nextFundingRate'] * 100, 4)
+    print (nextFundingRate)
+    return render_template('home.html', coin = coin, currentPrice = currentPrice, quarterPrice = quarterPrice, nextFundingRate = nextFundingRate)
 
 # main
 if __name__ == "__main__":

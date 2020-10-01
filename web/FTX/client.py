@@ -33,6 +33,7 @@ class Client(object):
                 payload += '?' + urlencode(query)
             elif query:
                 payload += json.dumps(query)
+            print (payload)
             sign = hmac.new(bytes(self._api_secret, 'utf-8'), bytes(payload, 'utf-8'), hashlib.sha256).hexdigest()
 
             headers.update({
@@ -228,6 +229,30 @@ class Client(object):
 
         return self._send_request('public', 'GET', f"funding_rates")
 
+    def get_public_single_funding_rates(self, future, start_time=None, end_time=None):
+        """
+        https://docs.ftx.com/#get-funding-rates
+
+        :param future: the trading future to query 
+        :return: a list contains all funding rate of perpetual futures
+        """
+
+        query = {
+            'future': future,
+        }
+
+        if start_time != None:
+            query.update({ 
+                'start_time': start_time,
+            })
+        
+        if end_time != None:
+            query.update({ 
+                'end_time': end_time
+            })
+
+        return self._send_request('public', 'GET', f"funding_rates", query)
+
     # TODO: Note that this only applies to index futures, e.g. ALT/MID/SHIT/EXCH/DRAGON.
     def get_public_etf_future_index(self, index):
         """
@@ -334,6 +359,15 @@ class Client(object):
         """
 
         return self._send_request('private', 'GET', f"wallet/balances")
+    
+    def get_private_wallet_all_balances(self):
+        """
+        https://docs.ftx.com/#get-balances-of-all-accounts
+
+        :return: a list contains all accounts balances
+        """
+        
+        return self._send_request('private', 'GET', f"wallet/all_balances")
 
     def get_private_wallet_single_balance(self, coin):
         """
@@ -348,15 +382,6 @@ class Client(object):
         if balance_coin == []:
             return None
         return balance_coin[0]
-    
-    def get_private_wallet_all_balances(self):
-        """
-        https://docs.ftx.com/#get-balances-of-all-accounts
-
-        :return: a list contains all accounts balances
-        """
-        
-        return self._send_request('private', 'GET', f"wallet/all_balances")
     
     def get_private_wallet_deposit_address(self, coin, chain):
         """
