@@ -1,4 +1,4 @@
-import os, requests, time, json, base64
+import requests,
 import pandas as pd
 
 import matplotlib
