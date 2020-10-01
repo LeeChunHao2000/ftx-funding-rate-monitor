@@ -1,8 +1,6 @@
-import requests, time, json, base64
+import os, requests, time, json, base64
 import pandas as pd
 import matplotlib.pyplot as plt
-
-from io import BytesIO
 
 from FTX.client import Client
 
@@ -35,9 +33,22 @@ def perpetual(coin):
 
     currentPrice           = client.get_public_single_future(coin)['last']
     quarterPrice           = client.get_public_single_future(quarter)['last']
-    nextFundingRate = round(client.get_public_future_stats(coin)['nextFundingRate'] * 100, 4)
-    print (nextFundingRate)
-    return render_template('home.html', coin = coin, currentPrice = currentPrice, quarterPrice = quarterPrice, nextFundingRate = nextFundingRate)
+    premiumPrice           = round(quarterPrice - currentPrice, 2)
+    premiumPriceRate       = round((premiumPrice / currentPrice) * 100, 2)
+
+    nextFundingRate        = round(client.get_public_future_stats(coin)['nextFundingRate'] * 100, 4)
+    lastFundingRate        = round(client.get_public_single_funding_rates(coin)[0]['rate'] * 100, 4)
+
+    currentKLine           = pd.DataFrame(client.get_public_k_line(coin, 3600, 500)).close
+    quarterKLine           = pd.DataFrame(client.get_public_k_line(quarter, 3600, 500)).close
+
+    plt.rcParams['figure.figsize'] = (8.0, 4.0)
+    currentKLine.plot(label = coin + ' Price')
+    quarterKLine.plot(label = quarter + ' Price')
+    plt.legend()
+    plt.savefig(f'./web/static/img/{coin}.png')
+
+    return render_template('home.html', coin = coin, currentPrice = currentPrice, quarterPrice = quarterPrice, premiumPrice = premiumPrice, premiumPriceRate = premiumPriceRate, nextFundingRate = nextFundingRate, lastFundingRate = lastFundingRate)
 
 # main
 if __name__ == "__main__":

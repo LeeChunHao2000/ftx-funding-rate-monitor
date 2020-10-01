@@ -41,6 +41,8 @@
         <h3 align="left">
         當前價格: {{ currentPrice }}<br>
         季度價格: {{ quarterPrice }}<br>
+        溢價價格: {{ premiumPrice }}<br>
+        溢價比率: {{ premiumPriceRate }} %<br>
 
         <h1 align="center" id="費率"><br>費率</h1>
         
@@ -48,12 +50,13 @@
 
         <h3 align="left">
         當前費率: {{ nextFundingRate }} % <br>
+        上期費率: {{ lastFundingRate }} % <br>
 
 
         <h1 align="center" id="價格圖"><br>價格圖</h1>
 
         <hr size=1></hr>
-
+        <img src="static/img/{{ coin }}.png">
         </div>
     
     </body>
