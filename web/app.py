@@ -60,7 +60,7 @@ def perpetual(coin):
     plt.savefig(f'/app/static/img/{coin}-Rate.png')
     plt.cla()
 
-    return render_template('home.html', coin = coin, currentPrice = currentPrice, quarterPrice = quarterPrice, premiumPrice = premiumPrice, premiumPriceRate = premiumPriceRate, nextFundingRate = nextFundingRate, lastFundingRate = lastFundingRate)
+    return render_template('coin.html', coin = coin, currentPrice = currentPrice, quarterPrice = quarterPrice, premiumPrice = premiumPrice, premiumPriceRate = premiumPriceRate, nextFundingRate = nextFundingRate, lastFundingRate = lastFundingRate)
 
 # main
 if __name__ == "__main__":
