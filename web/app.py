@@ -24,7 +24,11 @@ pd.set_option('display.unicode.east_asian_width', True)
 
 @app.route("/")
 def home():
-    return 'home'
+    client = Client('', '')
+    df = pd.DataFrame(client.get_public_all_perpetual_futures())
+    df = pd.DataFrame(df, columns=['name', 'underlying', 'underlyingDescription'])
+    df.columns = ['name', 'symbol', 'full name']
+    return render_template('home.html', tables=[df.to_html()])
 
 @app.route("/<coin>")
 def perpetual(coin):
