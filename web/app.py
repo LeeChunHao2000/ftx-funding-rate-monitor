@@ -13,6 +13,7 @@ from pandas.plotting import parallel_coordinates, table
 
 # 全域變數
 app = Flask(__name__)
+client = Client('', '')
 
 # Pandas 設定
 pd.set_option('display.max_columns', None)
@@ -24,10 +25,21 @@ pd.set_option('display.unicode.east_asian_width', True)
 
 @app.route("/")
 def home():
-    client = Client('', '')
+
     df = pd.DataFrame(client.get_public_all_perpetual_futures())
     df = pd.DataFrame(df, columns=['name', 'underlying', 'underlyingDescription'])
     df.columns = ['Name', 'Symbol', 'Full name']
+
+    rateSum = []
+    for coin in df.Name:
+        sum = 0
+        for data in client.get_public_single_funding_rates(coin):
+            sum += data['rate']
+        rateSum.append(round(abs(sum) * 100, 4))
+    
+    df['Rates (500 hrs)'] = rateSum
+    df.sort_values("Rates (500 hrs)", inplace=True, ascending=False)
+
     return render_template('home.html', tables=[df.to_html()])
 
 @app.route("/<coin>")
@@ -35,8 +47,6 @@ def perpetual(coin):
 
     quarter = coin.upper() + '-1225'
     coin    = coin.upper() + '-PERP'
-
-    client = Client('', '')
 
     currentPrice           = client.get_public_single_future(coin)['last']
     quarterPrice           = client.get_public_single_future(quarter)['last']
