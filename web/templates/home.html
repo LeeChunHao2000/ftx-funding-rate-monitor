@@ -4,6 +4,8 @@
 
     <head>
 
+        <link rel="icon" href="{{ url_for('static', filename='img/alpaca_logo.ico') }}">
+
         <title>FTX Funding Rate Monitor</title>
     
         <style type="text/css">
@@ -15,24 +17,46 @@
                 margin: 0 auto;
 
                 text-align: center;
+
+                padding: 20px;
     
             }
     
-            table td, table th{
+            table th{
     
                 border: 1px solid #cad9ea;
     
                 color: #666;
     
                 height: 30px;
+
+                padding: 10px;
     
+            }
+
+            table td{
+
+                border: 1px solid #cad9ea;
+    
+                color: #666;
+    
+                height: 30px;
+
+                padding: 20px;
+            
+            }
+
+            td:hover {
+
+                background-color: #E6FBFF;
+
             }
     
             table thead th{
     
                 background-color: #CCE8EB;
     
-                width: 250px;
+                /* width: 250px; */
 
                 text-align: center;
     
@@ -41,6 +65,7 @@
             table tr{
 
                 text-align: center;
+
             }
     
             table tr:nth-child(odd){

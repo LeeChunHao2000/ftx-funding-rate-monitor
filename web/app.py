@@ -27,7 +27,7 @@ def home():
     client = Client('', '')
     df = pd.DataFrame(client.get_public_all_perpetual_futures())
     df = pd.DataFrame(df, columns=['name', 'underlying', 'underlyingDescription'])
-    df.columns = ['name', 'symbol', 'full name']
+    df.columns = ['Name', 'Symbol', 'Full name']
     return render_template('home.html', tables=[df.to_html()])
 
 @app.route("/<coin>")
