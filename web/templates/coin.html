@@ -58,13 +58,13 @@
 
         <hr size=1></hr>
 
-        <img src="static/img/{{ coin }}.png">
+        {% include '%s_premium.html' % coin %}
 
         <h1 align="center" id="費率圖"><br>費率圖</h1>
 
         <hr size=1></hr>
 
-        <img src="static/img/{{ coin }}-Rate.png">
+        {% include '%s_rate.html' % coin %}
 
         </div>
     

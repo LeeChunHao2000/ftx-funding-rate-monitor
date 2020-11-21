@@ -1,6 +1,8 @@
 flask
 numpy
 pandas
+plotly
 requests
 gunicorn
+cufflinks
 matplotlib
